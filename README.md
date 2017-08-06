@@ -5,9 +5,13 @@ Twitter Timeline Challenge
 
 #### 	Part-1: User Timeline
 	1. Start => User visits your script page.
+
 	2. User will be asked to connect using his Twitter account using Twitter Auth.
+
 	3. After authentication, your script will pull latest 10 tweets from his “home” timeline.
+
 	4. 10 tweets will be displayed using a jQuery-slideshow.
+
 
 ##### 	Part-2: Followers Timeline
 	1. Below jQuery-slideshow (in step#4 from part-1), display list 10 followers (you can take any 10 random followers).
@@ -50,23 +54,23 @@ Twitter Timeline Challenge
 
 ##### 	Third-Party API and FrameWorks
 
-	1. [Bootstrap] (http://getbootstrap.com/)
+1. [Bootstrap](http://getbootstrap.com/)
 
-	2. [jQuery] (https://jquery.com/)
+2. [jQuery](https://jquery.com/)
 
-	3. [Twitter oauth] (https://dev.twitter.com/oauth)
+3. [Twitter oauth](https://dev.twitter.com/oauth)
 
-	4. [Twitter oauth abraham library] (https://github.com/abraham/twitteroauth)
+4. [Twitter oauth abraham library](https://github.com/abraham/twitteroauth)
 
 
 ##### 	Tools
 
-	1. [Sublime Text Editor 3.0] (https://www.sublimetext.com/)
+1. [Sublime Text Editor 3.0](https://www.sublimetext.com/)
 
-	2. [Apache Server 2.0] (https://httpd.apache.org/download.cgi)
+2. [Apache Server 2.0](https://httpd.apache.org/download.cgi)
 
-	3. [000Webhost service-for hosting purpose] (https://www.000webhost.com/)
+3. [000Webhost service-for hosting purpose](https://www.000webhost.com/)
 
 
 ### Demo link
-	..* [Demo] (https://rtdemo.000webhostapp.com/)
+..* [Demo](https://rtdemo.000webhostapp.com/)
