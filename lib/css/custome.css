@@ -1,0 +1,83 @@
+
+html,body{
+    height: 100%
+}
+
+body{
+    overflow: scroll;
+    height: 80%;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; */
+    font-size: 14px; 
+    line-height: 1.42857143; 
+    color: #333; 
+    background-color: #fff;
+}
+.login-btn{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+#title{
+    margin-top: 20px;
+    font-size: 1.5em;
+    color: #757575;
+    font-family: 'Droid Serif', serif;
+}
+.slide{
+    padding: 20px;
+    align-items: center;
+}
+.slider_item{
+    padding: 20px;
+}
+#search_box{
+    float : none;
+    margin : 0  auto;
+    margin-top: 10px;
+    border-radius : 10px;
+    border:2px;
+    border-style: outset;
+    border:color: #007487;
+}
+
+
+#suggesstion-box{
+    float: none;
+    margin: 0 auto;
+    height: 100px;
+    overflow: auto;
+}
+.suggestion_follower{
+    background:#edf3fc;
+    float:none;
+    padding: 5px;
+    margin:0 auto;
+    font-size:15px;
+    border-style: outset;
+    border-bottom: 1px;
+    list-style-type: none;
+}
+.suggestion_follower:hover{
+    background: #2574f7;
+    cursor: pointer;
+}
+#followers{
+    height: : 300px;
+    float: none;
+    margin: 0 auto;
+    margin-bottom: 70px;   
+    color:#212121;
+    padding: 10px;
+}
+.follower{
+    cursor: pointer;
+    background: #9E9E9E;;
+    border-style: outset;
+    border-bottom: 1px;
+    border-color: #BDBDBD;
+    margin-top: 5px;
+}
+.follower:hover{
+    background: #616161;
+}
