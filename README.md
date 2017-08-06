@@ -48,7 +48,18 @@ Twitter Timeline Challenge
 
 	3. Java Script
 
+#####	Codding Structure
+	
+	###### MVC Codding structure has been follow.
 
+		1. Model files :- Functions.php and config.php
+
+		2. View files :- index.php , home.php, header.php, footer.php 
+
+		3. Controller file :- Controller.php
+
+	###### config.php specify configuration files which used in project(like :- bootstrap,js,css.).
+	
 ##### 	Back-End Technology
 	1. PHP
 
