@@ -50,7 +50,7 @@ Twitter Timeline Challenge
 
 #####	Codding Structure
 
-###### MVC Codding structure has been follow.
+##### MVC Codding structure has been follow.
 
 1. Model files :- Functions.php and config.php
 
