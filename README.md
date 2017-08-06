@@ -32,7 +32,9 @@ Twitter Timeline Challenge
 
 ####	Task Implemented
 
-	##### Part-1 and Part-2
+	1. Part-1 
+
+	2. Part-2
 
 #####	Front-End Technology
 
@@ -48,23 +50,23 @@ Twitter Timeline Challenge
 
 ##### 	Third-Party API and FrameWorks
 
-	1. [Bootstrap](http://getbootstrap.com/)
+	1. [Bootstrap] (http://getbootstrap.com/)
 
-	2. [jQuery](https://jquery.com/)
+	2. [jQuery] (https://jquery.com/)
 
-	3. [Twitter oauth](https://dev.twitter.com/oauth)
+	3. [Twitter oauth] (https://dev.twitter.com/oauth)
 
-	4. [Twitter oauth abraham library](https://github.com/abraham/twitteroauth)
+	4. [Twitter oauth abraham library] (https://github.com/abraham/twitteroauth)
 
 
 ##### 	Tools
 
-	1. [Sublime Text Editor 3.0](https://www.sublimetext.com/)
+	1. [Sublime Text Editor 3.0] (https://www.sublimetext.com/)
 
-	2. [Apache Server 2.0](https://httpd.apache.org/download.cgi)
+	2. [Apache Server 2.0] (https://httpd.apache.org/download.cgi)
 
-	3. [000Webhost service-for hosting purpose](https://www.000webhost.com/)
+	3. [000Webhost service-for hosting purpose] (https://www.000webhost.com/)
 
 
 ### Demo link
-	..* [Demo](https://rtdemo.000webhostapp.com/)
+	..* [Demo] (https://rtdemo.000webhostapp.com/)
