@@ -101,6 +101,12 @@
 			}
 			return json_encode(array('status'=>true,'data'=>$tweet_result));
 		}
+		#User follower:- get current logged in user follower
+		/*
+		*
+		*	return all followers of current logged user in json format
+		*
+		*/
 		function userFollower(){
 			$access_token = $_SESSION['access_token']; 
 			$connection = new TwitterOAuth(CONSUMER_KEY, CONSUMER_SECRET, $access_token['oauth_token'], $access_token['oauth_token_secret']);
