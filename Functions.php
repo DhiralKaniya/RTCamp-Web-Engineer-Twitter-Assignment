@@ -1,34 +1,29 @@
 <?php 
 
-	#Include require 
-	/*
-	*
-	* mdole.php contains configuration and global file of the project
-	*/
+	/**
+	 *	include model.php which contains configuration of project
+	 *
+	 */
 	require('model.php');
-	#Functionality
-	/*
-	*
-	* Define the Functionality of the project
-	* Login,logout,user-tweet,callback Handler,user-tweet,user-follower.
-	* 
-	*/
+	/**
+	 * Define the Functionality of the project
+	 * Login,logout,user-tweet,callback Handler,user-tweet,user-follower.
+	 */
 	class Functionality{
-		#logout function which unset all session data of the user
-		/*
-		*
-		* redirect at index.php after destory all data from the session.
-		*/
+		/**
+		 *	Handle logout functionality
+		 *
+		 */
 		function logout(){
 			session_unset('data');
 			$home_path = 'index.php';
 			header('Location:'.filter_var($home_path,FILTER_SANITIZE_URL));
 		}
-		#provide login url to authorized the app..
-		/*
-		*
-		*	redirect at index.php with identity of the logint_url of user
-		*/
+		/**
+		 *	handle login url request
+		 *
+		 * @return $_SESSION['login url']
+		 */
 		function logintURL(){
 			$connection = new TwitterOAuth(CONSUMER_KEY, CONSUMER_SECRET);
 			$request_token = $connection->getRequestToken(OAUTH_CALLBACK); 
@@ -39,16 +34,15 @@
 				$_SESSION['request_token_secret'] = $request_token['oauth_token_secret'];
 				$_SESSION['login_url'] = $connection->getAuthorizeURL($token);
 				header('Location'.filter_var($_SESSION['login_url'],FILTER_SANITIZE_URL));
-				//echo $login_url;
 			}
 		}
-		#handle call back from the twitter 
-		/*
-		* @request_token :- which provided by twitter once user authorized the 
-		* application
-		*
-		*  Redirection at the call back page after call back is success
-		*/
+		/**
+		 *	handle call back from the twitter 
+		 *
+		 * @param = @request_token :- which provided by twitter once user authorized the 
+		 * 	application
+		 * Redirection at the call back page after call back is success
+		 */
 		function handleCallback($request_token){
 			$connection = new TwitterOAuth(CONSUMER_KEY, CONSUMER_SECRET, $_SESSION['request_token'], $_SESSION['request_token_secret']);
 			$access_token = $connection->getAccessToken($request_token);
@@ -65,13 +59,11 @@
 				}
 			}
 		}
-		#user tweet function get 10 tweet from the tweeter
-		/*
-		*	@follower = its screen_name of the follower 
-		*	if $follower == null then it return current login users tweet
-		*
-		*	return user tweet with status in json format
-		*/
+		/**
+		 * @param = @follower = its screen_name of the follower 
+		 *	if $follower == null then it return current login users tweet
+		 * return user tweet with status in json format
+		 */
 		function userTweet($follower){
 			$access_token = $_SESSION['access_token'];
 			$connection = new TwitterOAuth(CONSUMER_KEY, CONSUMER_SECRET, $access_token['oauth_token'], $access_token['oauth_token_secret']);
@@ -92,8 +84,9 @@
 				foreach ($tweets as $key => $tweet) {
 					$text = $tweet->text;
 					$tweet_result[$key]['text']=preg_replace("~[[:alpha:]]+://[^<>[:space:]]+[[:alnum:]/]~","<a target='_blank' href=\"\\0\">\\0</a>",$text);
-					if(isset($tweet->entities->media[0]->media_url)){
-						$tweet_result[$key]['images']= "<img src = ".$tweet->entities->media[0]->media_url_https."/>";
+					//print_r($tweet);
+					if(isset($tweet->extended_entities->media[0]->media_url_https)){
+						$tweet_result[$key]['images']= $tweet->extended_entities->media[0]->media_url_https;
 					}else{
 						$tweet_result[$key]['images']='';
 					}
@@ -147,9 +140,9 @@
 		# type in search box
 		/*
 		* 
-		* 	@follower :- specify the user type follower name
+		* 	@param  @follower :- specify the user type follower name
 		*
-		*	return list of the matching follower list in json format
+		*	return  :- list of the matching follower list in json format
 		*/
 		function searchFollower($follower){
 			$ftext = $follower;
@@ -164,6 +157,32 @@
 			    }	
 			}
 			return json_encode(array('status'=>true,'data'=>$search_follower));
+		}
+		#get tweets of current login user
+		/*
+		*
+		*
+		* 	return @tweets all tweets of current login user.
+		*/
+		function getTweets(){
+			$access_token = $_SESSION['access_token']; 
+			$connection = new TwitterOAuth(CONSUMER_KEY, CONSUMER_SECRET, $access_token['oauth_token'], $access_token['oauth_token_secret']);
+			$data = $_SESSION['data'];
+			$count = 10000;
+			$params = array("screen_name"=>$data->screen_name,"count"=>$count);
+			$tweets = $connection->get('statuses/home_timeline',$params);
+			$tweet_result = array();
+			$index = 0;
+			foreach($tweets as $tweet){
+				$tweet_result[$index]['id'] = $tweet->id_str;
+				$tweet_result[$index]['createdAt'] = $tweet->created_at;
+				$tweet_result[$index]['text'] = $tweet->text;
+				$tweet_result[$index]['name'] = $tweet->user->name;
+				$tweet_result[$index]['screen_name'] = $tweet->user->screen_name;
+				$tweet_result[$index]['profileImageurl'] = $tweet->user->profile_image_url;
+				$index++;
+			}
+			return $tweet_result;
 		}
 	}
 ?>

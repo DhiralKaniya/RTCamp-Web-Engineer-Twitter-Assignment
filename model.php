@@ -4,7 +4,7 @@
 	*
 	* increase maximum execution time of the server
 	*/
-	ini_set('max_execution_time', 600);
+	ini_set('max_execution_time', 1000);
 	/*
 	*
 	* increase memory limit of the server
