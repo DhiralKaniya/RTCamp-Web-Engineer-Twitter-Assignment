@@ -12,6 +12,10 @@ body{
     color: #333; 
     background-color: #fff;
 }
+.carousel-inner>.item>a>img, .carousel-inner>.item>img, .img-responsive, .thumbnail a>img, .thumbnail>img {
+    max-width: 100%;
+    height: auto;
+}
 .login-btn{
     position: fixed;
     top: 50%;
@@ -23,6 +27,10 @@ body{
     font-size: 1.5em;
     color: #757575;
     font-family: 'Droid Serif', serif;
+}
+.tweet_image{
+    margin:0 auto;
+    float: none;
 }
 .slide{
     padding: 20px;
