@@ -8,7 +8,7 @@
             <a href="https://github.com/DhiralKaniya" target="_new"><i class="fa fa-github fa-2x" aria-hidden="true"></i></a>&nbsp;&nbsp;
         	<a href="https://twitter.com/dhiralskaniya" target="_new"><i class="fa fa-twitter fa-2x" aria-hidden="true"></i></a>&nbsp;&nbsp;  
         	<a href="https://www.linkedin.com/in/dhiral-kaniya-3b232290" target="_new"><i class="fa fa-linkedin fa-2x" aria-hidden="true"></i></i></a>&nbsp;&nbsp; 
-        	<a href="https://www.instagram.com/imdhiral/" target="_new"><i class="fa fa-instagram fa-2x" aria-hidden="true"></i></i></a>&nbsp;&nbsp;  
+        	<a href="https://stackoverflow.com/users/7560986/dhiral-kaniya" target="_new"><i class="fa fa-stack-overflow fa-2x" aria-hidden="true"></i></i></a>&nbsp;&nbsp;  
         </div>
     </div>
 </nav>

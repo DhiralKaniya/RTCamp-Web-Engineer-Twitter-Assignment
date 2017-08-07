@@ -21,7 +21,7 @@
 			require('config.php');
 		?>
 	</head>
-	<body>
+	<body background="image/background.jpg">
 		<div class="text-center" id= "body">
 		<?php 
 
@@ -30,7 +30,7 @@
 			?>
 			<div class= "login-btn">
 				<a href='<?php echo $login_url; ?>'>
-					<button type="button" class="btn btn-primary btn-md">
+					<button type="button" class="btn btn-primary btn-lg">
 		        	<i class="fa fa-twitter"></i>
 				    | Login With Twitter
 				    </button>

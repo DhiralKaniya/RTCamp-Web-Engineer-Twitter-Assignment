@@ -19,12 +19,10 @@
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
               <ul>
-                <li class="dropdown-item"><a href="#">PDF</a></li>
-                <li class="dropdown-item"><a href="#">xls</a></li>
-                <li class="dropdown-item"><a href="#">csv</a></li>
-                <li class="dropdown-item"><a href="#">xml</a></li>
-                <li class="dropdown-item"><a href="#">json</a></li>
-                <li class="dropdown-item"><a href="#">SpreadSheet</a></li>
+                <li class="dropdown-item"><a href="Controller.php?csv-format=true">csv</a></li>
+                <li class="dropdown-item"><a href="Controller.php?json-format=true">json</a></li>
+                <li class="dropdown-item"><a href="Controller.php?google-spreadsheet=true">SpreadSheet</a></li>
+                <li class="dropdown-item"><a href="Controller.php?xls-format=true">xls</a></li>
               </ul>
             </div>
           </li>

@@ -10,7 +10,7 @@
 			else
 				header('location:index.php');
 		?>
-		<script type="text/javascript" src="lib\js\custome.js"></script>
+		<script type="text/javascript" src="lib\js\main.js"></script>
 	</head>
 	<body>
 		<?php 
