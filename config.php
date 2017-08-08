@@ -1,4 +1,9 @@
-	<meta charset="utf-8">
+<?php
+    /**
+     * Configuration of all third party library which are used in the project
+     */
+?>
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 

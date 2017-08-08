@@ -83,12 +83,12 @@ Twitter Timeline Challenge
 
 ##### 	Tools
 
-1. [Sublime Text Editor 3.0](https://www.sublimetext.com/)
+1. [PHPStorm](https://www.jetbrains.com/phpstorm/)
 
 2. [Apache Server 2.0](https://httpd.apache.org/download.cgi)
 
 3. [000Webhost service-for hosting purpose](https://www.000webhost.com/)
 
-
+4. [PHPCS-Plugin in PHPStorm](https://confluence.jetbrains.com/display/PhpStorm/PHP+Code+Sniffer+in+PhpStorm)
 ### Demo link
 * [Demo](https://rtdemo.000webhostapp.com/)
