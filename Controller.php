@@ -91,7 +91,7 @@ if (isset($_REQUEST['csv-format'])) {
     $f = fopen('php://memory', 'w');
     $tweets = $function->getTweets();
     $delimiter=",";
-    fputcsv($f, array("id", "createdAt", "text", "name", "screen_name", "profile_image"), $delimiter);
+    fputcsv($f, array("id", "createdAt"), $delimiter);
     foreach ($tweets as $tweet) {
         fputcsv($f, $tweet, $delimiter);
     }
