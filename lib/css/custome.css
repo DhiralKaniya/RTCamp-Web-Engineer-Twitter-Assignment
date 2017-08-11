@@ -11,13 +11,17 @@ body{
 }
 .main-content{
     height: 100%;
-    background: #B3E5FC;
+    background: #fff;
 }
 .navbar-default {
-    background: #00BCD4;
+    background: #F5F5F5;;
+    border-bottom: solid;
+    border-bottom-width: 2px;
+    border-bottom-color:  #BDBDBD;
 }
 .navbar-brand{
-    color: #fff;
+    color: #4aa5de;
+
 }
 .carousel-inner>.item>a>img, .carousel-inner>.item>img, .img-responsive, .thumbnail a>img, .thumbnail>img {
     max-width: 100%;
@@ -37,15 +41,15 @@ body{
     overflow: hidden;
 }
 .navbar-default .navbar-brand{
-    color:#fff;
+    color:#4aa5de;
 }
 .navbar-default .navbar-nav>li>a{
-    color:#fff;
+    color:#4aa5de;
 }
 #title{
     margin-top: 70px;
     font-size: 1.5em;
-    color:#007487;
+    color:#4aa5de;
     font-family: 'Droid Serif', serif;
 }
 .tweet_image{
@@ -62,22 +66,22 @@ body{
 }
 .left-content{
     height: 100%;
-    background: #B3E5FC;
+    background: #fff;
 }
 .right-content{
     height: 100%;
-    background: #B3E5FC;
+    background: #fff;
     border-left: outset;
     border-width: 2px;
-    border-color: #007487;
+    border-color: #BDBDBD;
     height: 100%;
 }
 #search_box{
-    margin-top: 20%;
+    margin-top: 25%;
     border-radius : 10px;
     border:2px;
     border-style: outset;
-    border-color: #007487;
+    border-color: #616161;
     position: relative;
 
 }
@@ -88,13 +92,15 @@ body{
     overflow-x: hidden;
 }
 .follower{
+    font-size : 15px;
     cursor: pointer;
-    color:#FFFFFF;
+    color: #212121;
+    font-family: 'PT Sans', sans-serif;
     text-align: center;
     border-bottom: inset;
     border-color:#BDBDBD; ;
-    background: #00BCD4;
+    background: #F5F5F5;
 }
 .follower:hover{
-    background:  #0288D1;
+    background:  #9E9E9E;
 }
