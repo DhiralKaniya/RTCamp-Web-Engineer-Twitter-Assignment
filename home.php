@@ -23,33 +23,31 @@
     <?php
         require('header.php');
     ?>
-    <div class="jumbotron">
-        <div class="container"><div class="row" align="center" id = "title">
-                <?php echo $data->screen_name; ?>'s tweet</div>
+    <div class="row main-content" >
+        <div class="col-md-9 left-content">
+            <div class="row" align="center" id = "title">
+                <?php echo $data->screen_name; ?>'s tweet
+            </div>
             <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
                 <!--Wrapper item -->
                 <div class="carousel-inner">
                 </div>
             </div>
-            <div class="frmSearch">
-                <div id="seach-follower-box">
+        </div>
+        <div class="col-md-3 right-content">
+            <div class="row">
+                <div class="col-md-12">
                     <input name="search_box" id="search_box" placeholder="Search followers"
                            class="form-control"/>
-                    <div id="suggesstion-box">
-
-                    </div>
                 </div>
             </div>
-            <div class="page-header">
-                <h3>Your Followers</h3>
-            </div>
             <div id="followers" class="followers">
-                <p id ="follower_loading">Loading Your Followers..!!</p>
+                <a id ="follower_loading">Loading Your Followers..!!</a>
+            </div>
+            <div id="seach-follower-box">
             </div>
         </div>
+
     </div>
-    <?php
-        require('footer.php');
-    ?>
     </body>
 </html>
