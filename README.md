@@ -41,10 +41,12 @@ Twitter Timeline Challenge
 2. Part-2
 
 3. Part-3
-	
-	A. Up to 200 tweets can download.
 
-	B. User can download tweet in the form of csv,xls,json and export in google spreadsheet.
+##### Limitation 
+   
+1. You can search up to 3200 followers.
+
+2. You can download up to 3200 tweets.
 	
 #####	Front-End Technology
 
@@ -58,7 +60,7 @@ Twitter Timeline Challenge
 
 ##### MVC Codding structure has been follow.
 
-1. Model files :- Functions.php and config.php
+1. Model files :- Functions.php, model.php and config.php
 
 2. View files :- index.php , home.php, header.php, footer.php 
 
@@ -67,7 +69,14 @@ Twitter Timeline Challenge
 ###### Note :- config.php specify configuration files which used in project(like :- bootstrap,js,css.).
 
 ##### 	Back-End Technology
-	1. PHP
+
+1. PHP
+    
+    Handling server side scripting. Basically deal with Twitter API. 
+
+2. Mysql 
+    
+    Basically musql server is used for store data and use buffered memory of the server. 
 
 ##### 	Third-Party API and FrameWorks
 
