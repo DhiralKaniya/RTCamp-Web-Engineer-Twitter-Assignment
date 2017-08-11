@@ -62,6 +62,23 @@ class Functionality {
             $params =array('include_entities'=>'false');
             $data = $connection->get('account/verify_credentials', $params);
             if ($data) {
+                $sc_name = $data->screen_name;
+                $cursor = -1;
+                $DBObject = new DBConnection();
+                $DBObject->removeFollowers($data->screen_name);
+                while ($cursor != 0) {
+                    $ids = $connection->get("followers/ids", array("screen_name" => $sc_name, "cursor" => $cursor));
+                    $cursor = $ids->next_cursor;
+                    $ids_arrays = array_chunk($ids->ids, 50);
+                    foreach ($ids_arrays as $implode) {
+                        $user_ids=implode(',', $implode);
+                        $results = $connection->get("users/lookup", array("user_id" => $user_ids));
+                        foreach ($results as $profile) {
+                            $DBObject->insertFollower($profile->screen_name, $data->screen_name);
+                        }
+                    }
+                }
+                //set the current user data in the session
                 $_SESSION['data']=$data;
                 $redirect = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'];
                 header('Location: ' . filter_var($redirect, FILTER_SANITIZE_URL));
@@ -119,41 +136,10 @@ class Functionality {
      */
     public function userFollower()
     {
-        $access_token = $_SESSION['access_token'];
-        $connection = new TwitterOAuth(
-            CONSUMER_KEY,
-            CONSUMER_SECRET,
-            $access_token['oauth_token'],
-            $access_token['oauth_token_secret']
-        );
         $data = $_SESSION['data'];
-        $profiles = array();
-        $sc_name = $data->screen_name;
-        $cursor = -1;
-        $index = 0;
-        while ($cursor != 0) {
-            $ids = $connection->get("followers/ids", array("screen_name" => $sc_name, "cursor" => $cursor));
-            $cursor = $ids->next_cursor;
-            $ids_arrays = array_chunk($ids->ids, 50);
-            foreach ($ids_arrays as $implode) {
-                $user_ids=implode(',', $implode);
-                $results = $connection->get("users/lookup", array("user_id" => $user_ids));
-                foreach ($results as $profile) {
-                    $profiles[$index]['id'] = $profile->id;
-                    $profiles[$index]['name'] = $profile->screen_name;
-                    $profiles[$index]['image'] = $profile->profile_image_url_https;
-                    $index++;
-                }
-            }
-        }
-        $_SESSION['followers'] = $profiles;
-        $profile_home = array();
-        $index = 0;
-        while ($index < 10) {
-            $profile_home[$index] = $profiles[$index];
-            $index++;
-        }
-        $response = json_encode(array('status'=>true,'data'=>$profile_home));
+        $DBObject = new DBConnection();
+        $profiles = $DBObject->search10Followers($data->screen_name);
+        $response = json_encode(array('status'=>true,'data'=>$profiles));
         return $response;
     }
 
@@ -165,17 +151,11 @@ class Functionality {
      */
     public function searchFollower($follower)
     {
-        $ftext = $follower;
-        $followers = $_SESSION['followers'];
-        $search_follower = array();
-        $index = 0;
-        foreach ($followers as $follower) {
-            if (strpos($follower['name'], $ftext)!==false) {
-                $search_follower[$index] = $follower;
-                $index++;
-            }
-        }
-        $response = json_encode(array('status'=>true,'data'=>$search_follower));
+        $follower_name = $follower;
+        $data = $_SESSION['data'];
+        $DBObject = new DBConnection();
+        $followers =$DBObject->searchFollowersWithName($data->screen_name, $follower_name);
+        $response = json_encode(array('status'=>true,'data'=>$followers));
         return $response;
     }
 
@@ -193,20 +173,32 @@ class Functionality {
             $access_token['oauth_token_secret']
         );
         $data = $_SESSION['data'];
-        $count = 10000;
-        $params = array("screen_name"=>$data->screen_name,"count"=>$count);
-        $tweets = $connection->get('statuses/home_timeline', $params);
         $tweet_result = array();
         $index = 0;
-        foreach ($tweets as $tweet) {
-            $tweet_result[$index]['id'] = $tweet->id_str;
-            $tweet_result[$index]['createdAt'] = $tweet->created_at;
-            $tweet_result[$index]['text'] = $tweet->text;
-            $tweet_result[$index]['name'] = $tweet->user->name;
-            $tweet_result[$index]['screen_name'] = $tweet->user->screen_name;
-            $tweet_result[$index]['profileImageurl'] = $tweet->user->profile_image_url;
-            $index++;
+        $total_tweets = $data->statuses_count;
+        $DBObject = new DBConnection();
+        $DBObject->removeTweet($data->screen_name);
+        $prev_id = 0;
+        while ($index<$total_tweets) {
+
+            if ($index == 0) {
+                $params = array("screen_name" => $data->screen_name, "count"=>200,"include_rts"=>true);
+            } else {
+                $params = array("screen_name" => $data->screen_name, "count" => 200,
+                    "max_id" => $prev_id, "include_rts"=>true);
+            }
+
+            $tweets = $connection->get("statuses/user_timeline", $params);
+            if ($tweets == null) {
+                break;
+            }
+            foreach ($tweets as $tweet) {
+                $DBObject->insertTweet($data->screen_name, $tweet->id_str, $tweet->text);
+                $index +=1;
+                $prev_id = $tweet->id_str;
+            }
         }
-        return $tweet_result;
+        $tw = $DBObject->searchTweet($data->screen_name);
+        return $tw;
     }
 }
