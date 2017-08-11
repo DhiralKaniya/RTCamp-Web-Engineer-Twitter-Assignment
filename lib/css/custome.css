@@ -4,13 +4,20 @@ html,body{
 }
 
 body{
-    overflow: scroll;
-    height: 80%;
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; */
+    overflow: auto;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
     font-size: 14px; 
-    line-height: 1.42857143; 
-    color: #333; 
-    background-color: #fff;
+    line-height: 1.42857143;
+}
+.main-content{
+    height: 100%;
+    background: #B3E5FC;
+}
+.navbar-default {
+    background: #00BCD4;
+}
+.navbar-brand{
+    color: #fff;
 }
 .carousel-inner>.item>a>img, .carousel-inner>.item>img, .img-responsive, .thumbnail a>img, .thumbnail>img {
     max-width: 100%;
@@ -22,10 +29,23 @@ body{
     left: 50%;
     transform: translate(-50%, -50%);
 }
+
+.carousel-inner {
+    position: relative;
+    width: 100%;
+    height:400px;
+    overflow: hidden;
+}
+.navbar-default .navbar-brand{
+    color:#fff;
+}
+.navbar-default .navbar-nav>li>a{
+    color:#fff;
+}
 #title{
-    margin-top: 20px;
+    margin-top: 70px;
     font-size: 1.5em;
-    color: #757575;
+    color:#007487;
     font-family: 'Droid Serif', serif;
 }
 .tweet_image{
@@ -37,55 +57,44 @@ body{
     align-items: center;
 }
 .slider_item{
-    padding: 20px;
+    margin-top: 15%;
+    margin-bottom: 10%;
+}
+.left-content{
+    height: 100%;
+    background: #B3E5FC;
+}
+.right-content{
+    height: 100%;
+    background: #B3E5FC;
+    border-left: outset;
+    border-width: 2px;
+    border-color: #007487;
+    height: 100%;
 }
 #search_box{
-    float : none;
-    margin : 0  auto;
-    margin-top: 10px;
+    margin-top: 20%;
     border-radius : 10px;
     border:2px;
     border-style: outset;
-    border:color: #007487;
-}
+    border-color: #007487;
+    position: relative;
 
-
-#suggesstion-box{
-    float: none;
-    margin: 0 auto;
-    height: 100px;
-    overflow: auto;
-}
-.suggestion_follower{
-    background:#edf3fc;
-    float:none;
-    padding: 5px;
-    margin:0 auto;
-    font-size:15px;
-    border-style: outset;
-    border-bottom: 1px;
-    list-style-type: none;
-}
-.suggestion_follower:hover{
-    background: #2574f7;
-    cursor: pointer;
 }
 #followers{
-    height: : 300px;
-    float: none;
-    margin: 0 auto;
-    margin-bottom: 70px;   
-    color:#212121;
-    padding: 10px;
+    margin-top:10px;
+    height:498px;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 .follower{
     cursor: pointer;
-    background: #9E9E9E;;
-    border-style: outset;
-    border-bottom: 1px;
-    border-color: #BDBDBD;
-    margin-top: 5px;
+    color:#FFFFFF;
+    text-align: center;
+    border-bottom: inset;
+    border-color:#BDBDBD; ;
+    background: #00BCD4;
 }
 .follower:hover{
-    background: #616161;
+    background:  #0288D1;
 }
