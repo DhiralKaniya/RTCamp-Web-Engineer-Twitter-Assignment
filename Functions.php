@@ -13,7 +13,8 @@ class Functionality {
     */
     public function logout()
     {
-        session_unset();
+        unset($_SESSION['data']);
+        unset($_SESSION['login_url']);
         $home_path = 'index.php';
         header('Location:'.filter_var($home_path, FILTER_SANITIZE_URL));
     }
@@ -102,11 +103,11 @@ class Functionality {
         if ($follower!=null) {
             $screen_name = $_REQUEST['follower'];
             $params = array('include_entities' => false,'count'=>10,'screen_name'=>$screen_name);
+            $tweets = $connection->get('statuses/user_timeline', $params);
         } else {
             $params =array('include_entities'=>'false','count'=>10);
+            $tweets = $connection->get('statuses/home_timeline', $params);
         }
-
-        $tweets = $connection->get('statuses/user_timeline', $params);
         $tweet_result = array();
         if (isset($tweets->errors[0]->code)) {
             $tweet_result[0]['text'] = "Internal Error occure";
