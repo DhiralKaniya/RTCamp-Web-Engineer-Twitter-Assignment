@@ -174,25 +174,27 @@ class Functionality {
             $access_token['oauth_token_secret']
         );
         $data = $_SESSION['data'];
-        $tweet_result = array();
-        $index = 0;
         $total_tweets = $data->statuses_count;
+        $screen_name = $data->screen_name;
+        $index = 0;
+
         $DBObject = new DBConnection();
-        $DBObject->removeTweet($data->screen_name);
+        $DBObject->removeTweet($screen_name);
         $prev_id = 0;
         while ($index<$total_tweets) {
-
             if ($index == 0) {
-                $params = array("screen_name" => $data->screen_name, "count"=>200,"include_rts"=>true);
+                $params = array("screen_name" => $screen_name, "count"=>200,
+                    "include_rts"=>true,'exclude_replies'=>false);
             } else {
-                $params = array("screen_name" => $data->screen_name, "count" => 200,
-                    "max_id" => $prev_id, "include_rts"=>true);
+                $params = array("screen_name" => $screen_name, "count" => 200,
+                    "max_id" => $prev_id, "include_rts"=>true,'exclude_replies'=>false);
             }
 
             $tweets = $connection->get("statuses/user_timeline", $params);
             if ($tweets == null) {
                 break;
             }
+
             foreach ($tweets as $tweet) {
                 $DBObject->insertTweet($data->screen_name, $tweet->id_str, $tweet->text);
                 $index +=1;
@@ -200,6 +202,83 @@ class Functionality {
             }
         }
         $tw = $DBObject->searchTweet($data->screen_name);
+        return $tw;
+    }
+
+    /**
+     * @param $screen_name
+     * @return array
+     */
+    public function searchUsers($screen_name)
+    {
+        $access_token = $_SESSION['access_token'];
+        $connection = new TwitterOAuth(
+            CONSUMER_KEY,
+            CONSUMER_SECRET,
+            $access_token['oauth_token'],
+            $access_token['oauth_token_secret']
+        );
+        $params = array("screen_name"=>$screen_name);
+        $user_response = $connection->get("users/lookup", $params);
+
+        $user = array();
+        $index = 0;
+        foreach ($user_response as $u){
+            $user[$index]['id'] = $u->id_str;
+            $user[$index]['screen_name'] = $u->screen_name;
+            $user[$index]['name'] = $u->name;
+            $user[$index]['image'] = $u->profile_image_url_https;
+            $user[$index]['location'] = $u->location;
+            $user[$index]['followers'] = $u->followers_count;
+            $user[$index]['tweets'] = $u->statuses_count;
+            $user[$index]['background'] = $u->profile_background_image_url_https;
+            $index++;
+        }
+        return $user;
+    }
+
+    /**
+     * @param $screen_name
+     * @return array
+     */
+    public function generatePDFTweet($screen_name)
+    {
+        $access_token = $_SESSION['access_token'];
+        $connection = new TwitterOAuth(
+            CONSUMER_KEY,
+            CONSUMER_SECRET,
+            $access_token['oauth_token'],
+            $access_token['oauth_token_secret']
+        );
+        $params = array("screen_name"=>$screen_name);
+        $user_response = $connection->get("users/lookup", $params);
+        $total = $user_response[0]->statuses_count;
+        $index = 0;
+        $prev_id = 0;
+        $tw = array();
+        while ($index<$total && $index<3200) {
+            if ($index == 0) {
+                $params = array("screen_name" => $screen_name, "count"=>200,
+                    "include_rts"=>true,'exclude_replies'=>false);
+            } else {
+                $params = array("screen_name" => $screen_name, "count" => 200,
+                    "max_id" => $prev_id, "include_rts"=>true,'exclude_replies'=>false);
+            }
+
+            $tweets = $connection->get("statuses/user_timeline", $params);
+            if ($tweets == null) {
+                break;
+            }
+
+            foreach ($tweets as $tweet) {
+                //print_r($tweet);
+                $tw[$index]['no'] = $index;
+                $tw[$index]['id']=$tweet->id_str;
+                $tw[$index]['text']=$tweet->text;
+                $index +=1;
+                $prev_id = $tweet->id_str;
+            }
+        }
         return $tw;
     }
 }
