@@ -1,6 +1,7 @@
 # Powershell Scripts
-vender/
+vendor/
 composer.json
 composer.lock
-./idea/
+.idea/
 temp.php
+LICENSE
