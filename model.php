@@ -4,12 +4,12 @@
  *
  * increase maximum execution time of the server
  */
-ini_set('max_execution_time', 1000);
+ini_set('max_execution_time', 2000);
 /**
 *
 * Increase memory limit of the server
 */
-ini_set('memory_limit', '1024M');
+ini_set('memory_limit', '2048M');
 /**
 *  include requre file
 *  including tweeter oauth file

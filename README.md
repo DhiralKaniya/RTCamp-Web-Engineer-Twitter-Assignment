@@ -33,6 +33,10 @@ Twitter Timeline Challenge
 
 4. Once user clicks download button (after choosing option) all tweets for logged in users should be downloaded.
 
+##### Additional Task :- 
+1. On searching for any public account on Twitter it should allow the logged in user to download all the tweets of any public account.
+   
+2. Tweets should be downloaded in PDF format.
 
 ####	Task Implemented
 
@@ -42,11 +46,13 @@ Twitter Timeline Challenge
 
 3. Part-3
 
+4. Addditional Task
+
 ##### Limitation 
    
 1. You can search up to 3200 followers.
 
-2. You can download up to 3200 tweets.
+2. You can download up to 3255 tweets.
 	
 #####	Front-End Technology
 
@@ -76,7 +82,7 @@ Twitter Timeline Challenge
 
 2. Mysql 
     
-    Basically musql server is used for store data and use buffered memory of the server. 
+    Basically mysql server is used for store data and use buffered memory of the server. 
 
 ##### 	Third-Party API and FrameWorks
 
@@ -90,6 +96,8 @@ Twitter Timeline Challenge
 
 5. [Google Drive API](https://developers.google.com/drive/v3/web/quickstart/php)
 
+6. [FPDF](http://www.fpdf.org/)
+
 ##### 	Tools
 
 1. [PHPStorm](https://www.jetbrains.com/phpstorm/)
@@ -99,5 +107,6 @@ Twitter Timeline Challenge
 3. [000Webhost service-for hosting purpose](https://www.000webhost.com/)
 
 4. [PHPCS-Plugin in PHPStorm](https://confluence.jetbrains.com/display/PhpStorm/PHP+Code+Sniffer+in+PhpStorm)
+
 ### Demo link
 * [Demo](https://rtdemo.000webhostapp.com/)

@@ -1,0 +1,7 @@
+# Powershell Scripts
+vendor/
+composer.json
+composer.lock
+.idea/
+temp.php
+LICENSE
