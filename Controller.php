@@ -30,8 +30,6 @@ if (!isset($_SESSION['data']) && !isset($_GET['oauth_token'])) {
  * @param $_GET [oauth_token]
  */
 if (isset($_GET['oauth_token'])) {
-    echo $_SESSION['request_token'];
-    echo $_SESSION['request_token_secret'];
     $request_token = $_REQUEST['oauth_verifier'];
     $function->handleCallback($request_token);
 }
@@ -114,7 +112,6 @@ if (isset($_REQUEST['xls-format'])) {
         echo implode("\t", array_values($tweet))."\r\n";
     }
 }
-
 /**
  * Handle google spreadsheet tweet export request
  * Redirect at google
@@ -122,4 +119,15 @@ if (isset($_REQUEST['xls-format'])) {
 if (isset($_REQUEST['google-spreadsheet'])) {
     $_SESSION['user-tweets'] = $function->getTweets();
     header('location:lib\google-drive-api/index.php');
+}
+/**
+ * Handle username request
+ */
+if (isset($_REQUEST['search-username'])) {
+    $users = $function->searchUsers($_REQUEST['username']);
+    echo json_encode(array("status"=>true,"users"=>$users));
+}
+if(isset($_REQUEST['download'])){
+    $tweets = $function->generatePDFTweet($_REQUEST['username']);
+    echo json_encode($tweets);
 }
