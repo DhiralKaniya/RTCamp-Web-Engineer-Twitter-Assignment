@@ -52,7 +52,7 @@ Twitter Timeline Challenge
    
 1. You can search up to 3200 followers.
 
-2. You can download up to 3255 tweets.
+2. You can download up to 3200 tweets.
 	
 #####	Front-End Technology
 
